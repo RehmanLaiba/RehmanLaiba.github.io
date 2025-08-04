@@ -1,9 +1,17 @@
-container {
+body {
+    background-color:rgb(8, 3, 44);
+}
+
+h1 {
+    color:darkgoldenrod;
+}
+
+div {
     font-size: 12;
     font-family: 'Times New Roman', Times, serif;
     color: white;
-    padding: 40 px;
+    padding: 50 px;
     max-width: 800 px;
-    text-align: center;
-    background-color:darkslateblue;
+    text-align: left;
 }
+
