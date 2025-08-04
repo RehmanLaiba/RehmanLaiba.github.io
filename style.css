@@ -11,6 +11,7 @@ div {
     font-family: 'Times New Roman', Times, serif;
     color: white;
     padding: 50 px;
+    margin: 150 px;
     max-width: 500 px;
     text-align: left;
 }
