@@ -3,16 +3,41 @@ body {
 }
 
 h1 {
-    color:darkgoldenrod;
+    font-size: 30px;
+    color: gold;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
 div {
-    font-size: 12;
+    font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
-    color: white;
-    padding: 50 px;
-    margin: 150 px;
-    max-width: 500 px;
+    color: rgb(255, 255, 255);
+    padding-left: 20px;
+    padding-right: 20px;
     text-align: left;
 }
 
+.pizazz {
+    color: goldenrod;
+}
+
+a:link {
+    color: rgb(123, 193, 255);
+}
+
+a:visited {
+    color: goldenrod;
+}
+
+a:hover {
+    color: gold;
+}
+
+a:active {
+    color: orange;
+}
