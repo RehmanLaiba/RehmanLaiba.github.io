@@ -115,6 +115,11 @@ a:active {
     border-color: gold;
     border-style: solid;
     text-align: center;
+    flex: 1;
+}
+
+.index_div {
+    flex: 5;
 }
 
 .container {
@@ -128,9 +133,6 @@ a:active {
     flex: 1;
     padding: 20px;
 }
-
-.column:first-child { flex: 4; }
-.column:last-child { flex: 1; }
 
 @media (max-width: 600px) {
   .column {
