@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(8, 3, 44);
+    background-color:rgb(15, 7, 74);
 }
 
 h1 {
@@ -41,7 +41,12 @@ div {
     color: rgb(255, 255, 255);
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: left;
+    border-style: dashed;
+    border-color: gold;
+    border-radius: 20px;
 }
 
 nav {
@@ -73,7 +78,7 @@ nav a:hover {
 }
 
 .pizazz {
-    color: goldenrod;
+    color: gold;
 }
 
 a:link {
@@ -82,7 +87,7 @@ a:link {
 }
 
 a:visited {
-    color: goldenrod;
+    color:darkslateblue;
 }
 
 a:hover {
@@ -93,3 +98,51 @@ a:active {
     color: orange;
 }
 
+.clean_border {
+    border: none;
+}
+
+.blog {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.blog_logo {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    border-color: gold;
+    border-style: solid;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}
+
+.column:first-child { flex: 4; }
+.column:last-child { flex: 1; }
+
+@media (max-width: 600px) {
+  .column {
+    flex-direction: column;
+  }
+}
+
+.main {
+    background-color: rgb(8, 3, 44);
+}
+
+.skinny {
+    width: 60%;
+    margin: 20px auto;
+}
