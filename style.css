@@ -73,8 +73,12 @@ nav a {
 }
 
 nav a:hover {
-    text-color: gold;
+    color: gold;
     border-radius: 20px;
+}
+
+nav a:visited {
+    color: rgb(123, 193, 255);
 }
 
 .pizazz {
