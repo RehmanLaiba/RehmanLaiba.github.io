@@ -150,3 +150,16 @@ a:active {
     width: 60%;
     margin: 20px auto;
 }
+
+.return_home {
+    width: 50px;
+    top: 20px;
+    right: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.return_home:hover {
+  filter: drop-shadow(0 2px 6px rgba(157, 22, 181, 0.8));
+  transform: scale(1.05);
+}
