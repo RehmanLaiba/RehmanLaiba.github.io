@@ -157,7 +157,6 @@ a:active {
     top: 20px;
     right: 20px;
     position: fixed;
-    z-index: 1000;
 }
 
 .return_home:hover {
