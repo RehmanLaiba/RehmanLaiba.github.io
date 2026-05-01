@@ -144,6 +144,8 @@ a:active {
 .main {
     background-color: rgb(8, 3, 44);
     flex: 4;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .skinny {
@@ -214,7 +216,7 @@ a:active {
 
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: gold;
 }
 
 /* Icons */
@@ -241,6 +243,7 @@ a:active {
     margin: 0;
     padding: 0;
     border: none;
+    text-align: center;
     animation: float 4s ease-in-out infinite;
     animation-delay: calc(var(--i) * 0.3s);
 }
