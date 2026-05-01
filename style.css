@@ -1,5 +1,6 @@
 body {
     background-color:rgb(13, 6, 68);
+    background: radial-gradient(circle at center, #2a0a5e, #0d0644);
 }
 
 h1 {
@@ -59,17 +60,16 @@ nav {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    flex: 1;
-    justify-content: space-evenly;
+    flex: none;
+    justify-content: center;
 }
 
 nav a {
-    flex: 1;
+    flex: none;
     text-align: center;
     color: gold;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 0;
 }
 
 nav a:visited {
@@ -162,4 +162,94 @@ a:active {
 .return_home:hover {
   filter: drop-shadow(0 2px 6px rgba(157, 22, 181, 0.8));
   transform: scale(1.05);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.separator {
+    color: gold;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.subtitle {
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    color: rgb(123, 193, 255);
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 10px;
+    text-shadow:
+    0 0 3px rgba(123, 193, 255, 0.8),
+    0 0 8px rgba(123, 193, 255, 0.5);
+}
+
+.orbit {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+    border-radius: 50%;
+    border: none;
+}
+
+/* Each item */
+.orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform:
+        rotate(calc(var(--i) * 360deg / 4))   /* position around circle */
+        translate(250px)                      /* radius */
+        rotate(calc(var(--i) * -360deg / 4)); /* keep upright */
+
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+/* Icons */
+.orbit-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Labels */
+.orbit-item span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.orbit-item img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px gold);
+}
+
+
+.float {
+    margin: 0;
+    padding: 0;
+    border: none;
+    animation: float 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.3s);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-6px) scale(1.03);
+    }
 }
