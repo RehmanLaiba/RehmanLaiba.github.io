@@ -38,6 +38,22 @@ img {
   --page-width: 50rem;
 }
 
+/* ===== LIGHT ===== */
+/* Only the values that differ from cosmic. Must come after :root. */
+
+[data-theme="light"] {
+  --color-bg: #cfe2f8;
+  --color-surface: #fdfcf9;
+  --page-bg: radial-gradient(circle at center, #e2eefc, #c6dbf5);
+  --color-accent: #b8892b;
+  --color-text: #0f1d3d;
+  --color-link: #4ea8ff;
+  --color-secondary: #4ea8ff;
+  --color-visited-link: #a55ffa;
+  --color-clicking-link: #3a35c4;
+  --text-glow: 0 0 3px rgba(78, 168, 255, 0.6), 0 0 8px rgba(78, 168, 255, 0.35);
+}
+
 /* ===== BASE ===== */
 
 html { scroll-behavior: smooth; }
@@ -74,6 +90,16 @@ a:active {color: var(--color-clicking-link); }
 
 p, ul, ol {
   margin-bottom: var(--space-m);
+}
+
+/* Bullet points are little gold stars */
+ul {
+  list-style-type: "✦  ";
+}
+
+li::marker {
+  color: var(--color-accent);
+  font-size: 0.85em;
 }
 
 h1, h2, h3 {
@@ -131,6 +157,7 @@ h1, h2, h3 {
 
 .card {
   background: var(--color-surface);
+  border-radius: 6px;
   padding-left: var(--space-l);
   padding-right: var(--space-l);
 }
@@ -149,4 +176,86 @@ h1, h2, h3 {
 .highlight,
 .highlight:visited {
   color: var(--color-accent);
+}
+
+/* Light/dark switch in the top left: a chunky retro slider.
+   The gold block (::before) slides under whichever icon is active. */
+.theme-toggle {
+  position: absolute;
+  top: var(--space-m);
+  left: var(--space-m);
+  display: flex;
+  padding: 0;
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent);
+  box-shadow: 3px 3px 0 var(--color-accent);
+  cursor: pointer;
+}
+
+.theme-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-accent);
+}
+
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  background: var(--color-accent);
+  transition: left 0.15s steps(3);
+}
+
+[data-theme="light"] .theme-toggle::before {
+  left: 0;
+}
+
+.theme-toggle__icon {
+  position: relative;
+  display: block;
+  padding: 4px 6px;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.theme-toggle__icon svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+  shape-rendering: crispEdges;
+}
+
+/* The active icon sits on the gold block, so it takes the box colour instead. */
+.theme-toggle__moon,
+[data-theme="light"] .theme-toggle__sun {
+  color: var(--color-surface);
+  opacity: 1;
+}
+
+[data-theme="light"] .theme-toggle__moon {
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+/* ===== PHONES ===== */
+/* Narrow screens: slimmer side padding so the text gets more room. */
+
+@media (max-width: 40rem) {
+  body {
+    padding-left: var(--space-s);
+    padding-right: var(--space-s);
+  }
+
+  .card {
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
+  }
+
+  .theme-toggle {
+    top: var(--space-s);
+    left: var(--space-s);
+  }
 }
