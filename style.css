@@ -1,258 +1,150 @@
+/* ===== RESET ===== */
+
+body, h1, h2, h3, p, ul, ol, figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== THEMES ===== */
+
+/* ===== COSMIC ===== */
+
+:root {
+  --color-bg: #0d0644;
+  --color-text: #ffffff;
+  --color-accent: gold;
+  --color-link: #7bc1ff;
+  --color-clicking-link: #4542C0;
+  --color-visited-link: #bb7bff;
+  --color-secondary: #7bc1ff;
+  --color-surface: #08032c;
+  --page-bg: radial-gradient(circle at center, #2a0a5e, #0d0644);
+  --separator: "✦";
+  --text-glow: 0 0 3px rgba(123, 193, 255, 0.8), 0 0 8px rgba(123, 193, 255, 0.5);
+
+  --font-body: 'Times New Roman', Times, serif;
+  --font-heading: 'Times New Roman', Times, serif;
+
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+
+  --page-width: 50rem;
+}
+
+/* ===== BASE ===== */
+
 body {
-    background-color:rgb(13, 6, 68);
-    background: radial-gradient(circle at center, #2a0a5e, #0d0644);
+  background: var(--color-bg);
+  background: var(--page-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 2rem 1rem;
 }
 
-h1 {
-    font-size: 30px;
-    color: gold;
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
+h1, h2, h3 {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  text-align: center;
 }
 
-h2 {
-    font-size: 20px;
-    color: gold;
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
+h1 { font-size: 2rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1rem; }
+
+a { color: var(--color-link); text-decoration: none; }
+a:visited { color: var(--color-visited-link); }
+a:hover { color: var(--color-accent); }
+a:active {color: var(--color-clicking-link); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
 }
 
-h3 {
-    font-size: 16px;
-    color: gold; 
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
+p, ul, ol {
+  margin-bottom: var(--space-m);
 }
 
-div {
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
-    color: rgb(255, 255, 255);
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    border-style: double;
-    border-width: 4px;
-    border-color: gold;
+h1, h2, h3 {
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-s);
 }
 
-nav {
-    display: flex;
-    font-size: 16px;
-    color: gold;
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    flex: none;
-    justify-content: center;
+/* ===== LAYOUT ===== */
+
+.page {
+  max-width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-nav a {
-    flex: none;
-    text-align: center;
-    color: gold;
-    text-decoration: none;
-    font-weight: bold;
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-space, var(--space-m));
+  padding-top: var(--stack-space, var(--space-m));
+  padding-bottom: var(--stack-space, var(--space-m));
 }
 
-nav a:visited {
-    color: rgb(123, 193, 255);
+/* ===== COMPONENTS ===== */
+
+.tagline {
+  margin-top: 0;
+  color: var(--color-secondary);
+  font-size: 0.8125rem;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: var(--text-glow);
 }
 
-nav a:hover {
-    color: gold;
-    border-radius: 20px;
+/* Row of links under the title, separated by ✦ */
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-s);
+  margin: var(--space-m) 0;
+  padding: 0;
+  list-style: none;
 }
 
-.pizazz {
-    color: gold;
+.site-nav li + li::before {
+  content: var(--separator);
+  color: var(--color-accent);
+  margin-right: var(--space-s);
 }
 
-a:link {
-    color: rgb(123, 193, 255);
-    text-decoration-line: none;
+.site-nav a {
+  font-weight: bold;
 }
 
-a:visited {
-    color:rgb(70, 66, 199);
+.card {
+  background: var(--color-surface);
+  padding-left: var(--space-l);
+  padding-right: var(--space-l);
 }
 
-a:hover {
-    color: gold;
+/* A heading at the very top of a card doesn't need extra space above it. */
+.card h2:first-child {
+  margin-top: 0;
 }
 
-a:active {
-    color: orange;
+/* The last thing in a card doesn't need its bottom margin; the card's padding already provides the space. */
+.card > :last-child {
+  margin-bottom: 0;
 }
 
-.clean_border {
-    border: none;
-}
-
-.blog {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    flex: 1;
-}
-
-.blog_logo {
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%;
-    border-color: gold;
-    border-style: solid;
-    text-align: center;
-    flex: 1;
-    width: 150px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.column {
-    padding: 20px;
-}
-
-@media (max-width: 600px) {
-  .column {
-    flex-direction: column;
-  }
-}
-
-.main {
-    background-color: rgb(8, 3, 44);
-    flex: 4;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.skinny {
-    width: 60%;
-    margin: 20px auto;
-}
-
-.return_home {
-    width: 50px;
-    height: auto;
-    top: 20px;
-    right: 20px;
-    position: fixed;
-}
-
-.return_home:hover {
-  filter: drop-shadow(0 2px 6px rgba(157, 22, 181, 0.8));
-  transform: scale(1.05);
-}
-
-.right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.separator {
-    color: gold;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-
-.subtitle {
-    font-size: 13px;
-    font-weight: normal;
-    padding: 0;
-    color: rgb(123, 193, 255);
-    text-align: center;
-    margin-top: -25px;
-    margin-bottom: 10px;
-    text-shadow:
-    0 0 3px rgba(123, 193, 255, 0.8),
-    0 0 8px rgba(123, 193, 255, 0.5);
-}
-
-.orbit {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    margin: 100px auto;
-    border-radius: 50%;
-    border: none;
-}
-
-/* Each item */
-.orbit-item {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform:
-        rotate(calc(var(--i) * 360deg / 4))   /* position around circle */
-        translate(250px)                      /* radius */
-        rotate(calc(var(--i) * -360deg / 4)); /* keep upright */
-
-    text-align: center;
-    text-decoration: none;
-    color: gold;
-}
-
-/* Icons */
-.orbit-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
-
-/* Labels */
-.orbit-item span {
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.orbit-item img:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 5px gold);
-}
-
-
-.float {
-    margin: 0;
-    padding: 0;
-    border: none;
-    text-align: center;
-    animation: float 4s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.3s);
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-6px) scale(1.03);
-    }
+/* Gold emphasis. Also works on links (stays gold after being visited). */
+.highlight,
+.highlight:visited {
+  color: var(--color-accent);
 }
