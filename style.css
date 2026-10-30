@@ -40,6 +40,8 @@ img {
 
 /* ===== BASE ===== */
 
+html { scroll-behavior: smooth; }
+
 body {
   background: var(--color-bg);
   background: var(--page-bg);
