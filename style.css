@@ -1,3 +1,19 @@
+/* ===== FONTS ===== */
+
+/* Pinyon Script, self-hosted (licence in fonts/PinyonScript-OFL.txt) */
+@font-face {
+  font-family: "Pinyon Script";
+  src: url("fonts/PinyonScript.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Share Tech Mono, self-hosted (licence in fonts/ShareTechMono-OFL.txt) */
+@font-face {
+  font-family: "Share Tech Mono";
+  src: url("fonts/ShareTechMono.woff2") format("woff2");
+  font-display: swap;
+}
+
 /* ===== RESET ===== */
 
 body, h1, h2, h3, p, ul, ol, figure {
@@ -29,6 +45,9 @@ img {
 
   --font-body: 'Times New Roman', Times, serif;
   --font-heading: 'Times New Roman', Times, serif;
+  --font-script: "Pinyon Script", "Apple Chancery", cursive;
+  --font-mono: ui-monospace, Menlo, Consolas, "Courier New", monospace;
+  --font-tech: "Share Tech Mono", ui-monospace, Menlo, Consolas, monospace;
 
   --space-s: 0.5rem;
   --space-m: 1rem;
@@ -84,6 +103,20 @@ a:visited { color: var(--color-visited-link); }
 a:hover { color: var(--color-accent); }
 a:active {color: var(--color-clicking-link); }
 
+/* Links that leave the site get a small corner arrow (drawn as a tiny SVG,
+   so it looks the same everywhere and takes the link's colour) */
+a[href^="http"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: 0.15em;
+  vertical-align: 0.35em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 8L8 2M3.5 2H8v4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 8L8 2M3.5 2H8v4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-accent);
 }
@@ -123,6 +156,10 @@ h1, h2, h3 {
   padding-bottom: var(--stack-space, var(--space-m));
 }
 
+/* ===== UTILITIES ===== */
+
+.text-center { text-align: center; }
+
 /* ===== COMPONENTS ===== */
 
 .tagline {
@@ -153,6 +190,82 @@ h1, h2, h3 {
 
 .site-nav a {
   font-weight: bold;
+}
+
+/* No arrows in the link rows: being there already says "elsewhere" */
+.site-nav a::after {
+  content: none;
+}
+
+/* Main menu (About ✦ Writing): big monospace caps with a script first letter */
+.main-nav ul {
+  font-size: 1.5rem;
+  align-items: baseline;
+}
+
+.main-nav a {
+  display: inline-block;
+  line-height: 1;
+  font-family: var(--font-tech);
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Thin gold box around the page you're on */
+.main-nav a[aria-current="page"] {
+  padding: 0.15em 0.35em 0;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  border-radius: 3px;
+}
+
+.main-nav a::first-letter {
+  font-family: var(--font-script);
+  font-size: 1.6em;
+  letter-spacing: 0.02em;
+}
+
+/* Huge BlueprintingHeaven title on the Writing page:
+   script capitals, techy monospace caps, sized to the screen width */
+.blog-title {
+  margin: var(--space-l) 0 var(--space-m);
+  font-family: var(--font-tech);
+  font-size: 6.5vw;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.blog-title__cap {
+  font-family: var(--font-script);
+  font-size: 1.6em;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Post archive on the Writing page: month headings and star-bulleted posts */
+.archive .script-heading {
+  text-align: left;
+  margin-top: var(--space-l);
+  margin-bottom: 0.35rem;
+}
+
+.archive .script-heading:first-child {
+  margin-top: 0;
+}
+
+.post-list a {
+  font-weight: bold;
+}
+
+/* Small techy heading, e.g. "Laiba in Cyberspace" above the external links */
+.script-heading {
+  margin: var(--space-m) 0 0;
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.12em;
 }
 
 .card {
@@ -257,5 +370,93 @@ h1, h2, h3 {
   .theme-toggle {
     top: var(--space-s);
     left: var(--space-s);
+  }
+}
+
+/* ===== POSTS ===== */
+/* Gwern-ish reading pages: narrow column, justified and hyphenated text,
+   a drop cap, small techy details. */
+
+.page--reading {
+  --page-width: 42rem;
+}
+
+.post__title {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.post__meta {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-tech);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+}
+
+.post__body {
+  padding-top: var(--space-l);
+  padding-bottom: var(--space-l);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Drop cap: the first letter of the post in the script font */
+.post__body > p:first-child::first-letter {
+  float: left;
+  margin: 0.05em 0 0 -0.04em;
+  font-family: var(--font-script);
+  font-size: 4.4em;
+  line-height: 0.8;
+  color: var(--color-accent);
+}
+
+.post__body h2,
+.post__body h3 {
+  text-align: left;
+}
+
+.post__body blockquote {
+  margin: 0 0 var(--space-m);
+  padding-left: var(--space-m);
+  border-left: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+
+.post__body img {
+  margin: var(--space-m) auto;
+}
+
+.footnotes {
+  margin-top: var(--space-l);
+  padding-top: var(--space-m);
+  border-top: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.footnote-ref a,
+.footnote-back {
+  text-decoration: none;
+}
+
+.post__footer {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.post__footer p {
+  margin-bottom: var(--space-s);
+}
+
+/* On phones, justified text leaves big gaps between words, so align left */
+@media (max-width: 40rem) {
+  .post__body {
+    text-align: left;
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
   }
 }
